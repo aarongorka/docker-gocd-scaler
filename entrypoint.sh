@@ -10,9 +10,10 @@ if [[ "$@" == "run" ]]; then
         TOTAL="$(echo "${FILTERED}" | wc -l)"
         IDLE="$(echo "${FILTERED}" | grep '^Idle$' | wc -l)"
         BUILDING="$(echo "${FILTERED}" | grep '^Building$' | wc -l)"
-        aws cloudwatch --region "${EC2_REGION}" put-metric-data --metric-name TotalAgents --namespace GoCD --value "${TOTAL}" --unit "Count"
-        aws cloudwatch --region "${EC2_REGION}" put-metric-data --metric-name BuildingAgents --namespace GoCD --value "${BUILDING}" --unit "Count"
-        aws cloudwatch --region "${EC2_REGION}" put-metric-data --metric-name IdleAgents --namespace GoCD --value "${IDLE}" --unit "Count"
+        echo "{'@timestamp': $(date +"%T"), 'total': ${TOTAL}, 'idle': ${IDLE}, 'building': ${BUILDING}}"
+        aws cloudwatch --region "${EC2_REGION}" put-metric-data --metric-name TotalAgents --namespace GoCD --value "${TOTAL}" --unit "Count" &
+        aws cloudwatch --region "${EC2_REGION}" put-metric-data --metric-name BuildingAgents --namespace GoCD --value "${BUILDING}" --unit "Count" &
+        aws cloudwatch --region "${EC2_REGION}" put-metric-data --metric-name IdleAgents --namespace GoCD --value "${IDLE}" --unit "Count" &
         sleep 60
     done
 else
