@@ -1,4 +1,4 @@
-VERSION = 0.0.3
+VERSION = 1.0.0
 IMAGE_NAME ?= aarongorka/gocd-metrics:$(VERSION)
 TAG = $(VERSION)
 

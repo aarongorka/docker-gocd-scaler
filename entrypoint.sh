@@ -19,7 +19,7 @@ if [[ "$@" == "run" ]]; then
         aws cloudwatch --region "${EC2_REGION}" put-metric-data --metric-name IdleAgents --namespace GoCD --value "${IDLE}" --unit "Count" &
         aws cloudwatch --region "${EC2_REGION}" put-metric-data --metric-name CancelledAgents --namespace GoCD --value "${CANCELLED}" --unit "Count" &
         aws cloudwatch --region "${EC2_REGION}" put-metric-data --metric-name UnknownAgents --namespace GoCD --value "${UNKNOWN}" --unit "Count" &
-        sleep 60
+        sleep 50
     done
 else
     exec "$@"
