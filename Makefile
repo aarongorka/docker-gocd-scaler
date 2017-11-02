@@ -1,5 +1,5 @@
-VERSION = 1.1.0
-IMAGE_NAME ?= aarongorka/gocd-metrics:$(VERSION)
+VERSION = 2.0.0
+IMAGE_NAME ?= aarongorka/gocd-scaler:$(VERSION)
 TAG = $(VERSION)
 
 build:
