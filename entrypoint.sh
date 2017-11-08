@@ -27,7 +27,7 @@ if [[ "$@" == "master" ]]; then
         aws cloudwatch --region "${EC2_REGION}" put-metric-data --metric-name CancelledAgents --namespace GoCD --value "${CANCELLED}" --unit "Count" &
         aws cloudwatch --region "${EC2_REGION}" put-metric-data --metric-name UnknownAgents --namespace GoCD --value "${UNKNOWN}" --unit "Count" &
         aws cloudwatch --region "${EC2_REGION}" put-metric-data --metric-name MissingAgents --namespace GoCD --value "${MISSING}" --unit "Count" &
-        sleep 50
+        sleep 40
     done
 elif [[ "$@" == "agent" ]]; then
     echo "{\"@timestamp\": $(date +%s), \"message\": \"initialising\"}"
