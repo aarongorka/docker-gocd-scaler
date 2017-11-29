@@ -1,5 +1,5 @@
 # docker-gocd-scaler
-Utility container for enabling autoscaling a GoCD stack in AWS EC2.
+Utility container for enabling autoscaling on a GoCD stack hosted in AWS EC2.
 
 ## Before
 ![Before](before.png)
